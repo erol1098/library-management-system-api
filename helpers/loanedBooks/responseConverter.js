@@ -1,4 +1,6 @@
 const db = require('../../models');
+const capitalize = require('../capitalizeString');
+const convertLocaleDateString = require('../convertLocaleDateString');
 
 const Books = db.book;
 const Students = db.student;
@@ -15,11 +17,15 @@ const responseConverter = async (data) => {
 
     const response = {
       id: data.id,
-      book: `${book.title} - ${book.author}`,
-      student: `${student.firstName} ${student.lastName}`,
-      teacher: `${teacher.firstName} ${teacher.lastName}`,
-      loanedOn,
-      dueBack,
+      book: `${capitalize(book.title)} - ${capitalize(book.author)}`,
+      student: `${capitalize(student.firstName)} ${capitalize(
+        student.lastName,
+      )}`,
+      teacher: `${capitalize(teacher.firstName)} ${capitalize(
+        teacher.lastName,
+      )}`,
+      loanedOn: convertLocaleDateString(loanedOn),
+      dueBack: convertLocaleDateString(dueBack),
       loanStatus,
     };
 
