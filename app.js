@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const bookRouter = require('./routes/bookRouter');
+const studentRouter = require('./routes/studentRouter');
 
 const app = express();
 
@@ -16,4 +17,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //ROUTES
 app.use('/api/v1/books', bookRouter);
+app.use('/api/v1/students', studentRouter);
 module.exports = app;
