@@ -6,6 +6,7 @@ const logger = require('morgan');
 const bookRouter = require('./routes/bookRouter');
 const studentRouter = require('./routes/studentRouter');
 const teacherRouter = require('./routes/teacherRouter');
+const loanedBooksRouter = require('./routes/loanedBooksRouter');
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1/books', bookRouter);
 app.use('/api/v1/students', studentRouter);
 app.use('/api/v1/teachers', teacherRouter);
+app.use('/api/v1/loan', loanedBooksRouter);
 
 module.exports = app;

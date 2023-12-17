@@ -1,3 +1,5 @@
+const LOAN_STATUS = require('../enums/loanStatus');
+
 module.exports = (sequelize, DataTypes) => {
   const LoanedBooks = sequelize.define(
     'loanedBooks',
@@ -23,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
+      },
+      loanStatus: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: LOAN_STATUS.ACTIVE,
       },
     },
     {

@@ -41,8 +41,13 @@ db.loanedBook.belongsTo(db.student, { foreignKey: 'studentId' });
 db.teacher.hasMany(db.loanedBook, { foreignKey: 'teacherId' });
 db.loanedBook.belongsTo(db.teacher, { foreignKey: 'teacherId' });
 
-db.sequelize.sync({ force: false }).then(() => {
-  console.log('Drop and re-sync db');
-});
+db.sequelize
+  .sync({
+    force: dbConfig.sequelize.force,
+    alter: dbConfig.sequelize.alter,
+  })
+  .then(() => {
+    console.log('Drop and re-sync db');
+  });
 
 module.exports = db;
