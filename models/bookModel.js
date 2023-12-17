@@ -1,23 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-  const Book = sequelize.define('book', {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  const Book = sequelize.define(
+    'book',
+    {
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      genre: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: 'Unknown',
+      },
     },
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    {
+      timestamps: false,
     },
-    genre: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: 'Unknown',
-    },
-    year: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 0,
-    },
-  });
+  );
   return Book;
 };

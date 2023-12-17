@@ -42,7 +42,7 @@ db.teacher.hasMany(db.loanedBook, { foreignKey: 'teacherId' });
 db.loanedBook.belongsTo(db.teacher, { foreignKey: 'teacherId' });
 
 db.sequelize.sync({ force: false }).then(() => {
-  console.log('Drop and re-sync db.');
+  console.log('Drop and re-sync db');
 });
 
 module.exports = db;
