@@ -31,10 +31,13 @@ const addNewBook = async (req, res) => {
 
 const updateBook = async (req, res) => {
   try {
-    const book = await Books.update(req.body, {
+    await Books.update(req.body, {
       where: { title: req.params.title },
     });
-    res.status(200).json(book);
+
+    res
+      .status(200)
+      .json(await Books.findOne({ where: { title: req.params.title } }));
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
@@ -43,7 +46,7 @@ const updateBook = async (req, res) => {
 const deleteBook = async (req, res) => {
   try {
     const book = await Books.destroy({ where: { title: req.params.title } });
-    res.status(200).json(book);
+    res.status(204).json(book);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }

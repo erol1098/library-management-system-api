@@ -1,7 +1,3 @@
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
@@ -13,13 +9,8 @@ const corsOptions = {
   credentials: true,
 };
 
-//MIDDLEWARES
-app.use(logger('dev'));
-app.use(express.json());
+// MIDDLEWARES
 app.use(cors(corsOptions));
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 // START SERVER
 const port = process.env.PORT;
