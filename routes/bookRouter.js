@@ -2,10 +2,14 @@ const express = require('express');
 
 const bookController = require('../controllers/bookController');
 const bookValidator = require('../validations/bookValidations');
+const addCorsHeader = require('../middlewares/addCorsHeader');
 
 const router = express.Router();
 
-router.param('title', bookValidator.checkTitleExists);
+router.param('id', bookValidator.checkIdExists);
+
+//implemet addCorsHeader middleware to all routes
+router.use(addCorsHeader);
 
 router
   .route('/')
@@ -18,8 +22,8 @@ router
   );
 
 router
-  .route('/:title')
-  .get(bookController.getBookByTitle)
+  .route('/:id')
+  .get(bookController.getBookById)
   .put(
     bookValidator.checkBody,
     bookValidator.makeLowerCase,

@@ -11,9 +11,9 @@ const getAllBooks = async (req, res) => {
   }
 };
 
-const getBookByTitle = async (req, res) => {
+const getBookById = async (req, res) => {
   try {
-    const book = await Books.findOne({ where: { title: req.params.title } });
+    const book = await Books.findOne({ where: { id: req.params.id } });
     res.status(200).json(book);
   } catch (error) {
     res.status(404).send({ message: 'Aradığınız kitap bulunamadı.' });
@@ -54,7 +54,7 @@ const deleteBook = async (req, res) => {
 
 module.exports = {
   getAllBooks,
-  getBookByTitle,
+  getBookById,
   addNewBook,
   updateBook,
   deleteBook,

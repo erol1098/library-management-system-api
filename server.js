@@ -5,11 +5,11 @@ const app = require('./app');
 
 dotenv.config({ path: './.env' });
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN,
+  origin: 'http://localhost:3000',
   credentials: true,
 };
 
-// MIDDLEWARES
+// MIDDLEWARES;
 app.use(cors(corsOptions));
 
 // START SERVER
