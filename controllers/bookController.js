@@ -45,7 +45,7 @@ const updateBook = async (req, res) => {
 
 const deleteBook = async (req, res) => {
   try {
-    const book = await Books.destroy({ where: { title: req.params.title } });
+    const book = await Books.destroy({ where: { id: req.params.id } });
     res.status(204).json(book);
   } catch (error) {
     res.status(500).send({ message: error.message });
